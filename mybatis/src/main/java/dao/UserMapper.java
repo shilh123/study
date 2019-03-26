@@ -11,6 +11,7 @@ package dao;
 
 import java.util.List;
 
+import bean.UserBean;
 import pojo.User;
 
 /**
@@ -27,6 +28,8 @@ import pojo.User;
 
 public interface UserMapper {
 	public User getUser(Long id);
-	
+
 	public List<User> getUserOrders(Long id);
+
+	public void addUser(UserBean userBean);
 }

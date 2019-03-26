@@ -31,7 +31,14 @@
 	<select id="getUserOrders" parameterType="long"
 		resultMap="getUserOrders">
 		SELECT * FROM tb_user
-		LEFT JOIN tb_order ON tb_user.id = tb_order.user_id
+		LEFT JOIN tb_order ON tb_user.id =
+		tb_order.user_id
 		WHERE id = #{id}
 	</select>
+	<insert parameterType="bean.UserBean" id="addUser">
+		insert into
+		tb_user(`username`,
+		`password`, `phone`,
+		`email`,`create`,`update`)values(#{userName},#{password},#{phone},#{email},#{created},#{updated})
+	</insert>
 </mapper>

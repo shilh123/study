@@ -11,14 +11,20 @@ package mybatis;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import bean.UserBean;
 import dao.OrderMapper;
 import dao.UserMapper;
+import pojo.User;
+import util.Md5Owner;
 
 /**
  * ClassName:MainApp <br/>
@@ -40,18 +46,30 @@ public class MainApp {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
 
 		UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-		System.out.println(System.currentTimeMillis());
-		System.out.println(userMapper.getUserOrders(7l));
-		System.out.println(System.currentTimeMillis());
-
-		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
+//		System.out.println(userMapper.getUserOrders(7l));
+		Date date = new Date();
+		SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		UserBean userBean = new UserBean();
+//		user.setCreated(ft.format(date));
+		Random random = new Random();
+		int nextInt = random.nextInt();
+		userBean.setEmail("shilh123@sina.cn" + nextInt);
+//		user.setOrders(orders);
+		userBean.setPassword(Md5Owner.md5("123456"));
+		userBean.setPhone("18932900682" + nextInt);
+		userBean.setUserName("shilh" + nextInt);
+		userBean.setCreated(date);
+		userBean.setUpdated(date);
+		System.out.println(userBean);
+		userMapper.addUser(userBean);
+//		OrderMapper orderMapper = sqlSession.getMapper(OrderMapper.class);
 
 //		System.out.println(orderMapper.getOrderById(1l));
 
 	}
 
 	public void name() {
-		
+
 	}
 
 }
