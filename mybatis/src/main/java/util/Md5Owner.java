@@ -35,5 +35,7 @@ public class Md5Owner {
 		byte[] bytes = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k' };
 		random.nextBytes(bytes);
 		System.out.println(random.nextInt());
+		Date date = new java.sql.Timestamp(new java.util.Date().getTime());
+		System.out.println(date);
 	}
 }
