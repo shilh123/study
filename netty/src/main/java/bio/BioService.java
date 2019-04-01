@@ -44,7 +44,7 @@ public class BioService {
 		ServerSocket serverSocket = null;
 		try {
 			serverSocket = new ServerSocket(port);
-			System.out.println("The time server is start in port:" + port);
+			System.out.println("The time server is start in port :" + port);
 			Socket socket = null;
 			while (true) {
 				socket = serverSocket.accept();
@@ -82,7 +82,7 @@ class BioServerHander implements Runnable {
 				if (body == null) {
 					break;
 				}
-				System.out.println("The time server receive order" + body);
+				System.out.println("The time server receive order: " + body);
 				currentTime = "QUERY TIME ORDER".equals(body)
 						? new java.util.Date(System.currentTimeMillis()).toString()
 						: "BAD ORDER";
