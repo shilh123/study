@@ -9,8 +9,6 @@
 
 package consumer;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
